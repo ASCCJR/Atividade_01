@@ -6,23 +6,26 @@
  * @param {string} conv.para - A unidade de destino ('Celsius' ou 'Fahrenheit').
  * @returns {string|number} O resultado da conversão formatado ou uma mensagem de erro.
  */
+
+// Função principal para conversão de temperatura
 function converterTemperatura(conv) {
   // 1. Validação do objeto e suas propriedades
   if (!conv || typeof conv.valor !== 'number' || !conv.de || !conv.para) {
     return "Erro: Objeto de conversão inválido. Forneça { valor, de, para }.";
   }
 
+  // Extrai as propriedades do objeto para variáveis locais.
   const { valor, de, para } = conv;
   const deUnit = de.toLowerCase();
-  const paraUnit = para.toLowerCase(); // tolowercase significa converter para minúsculas
+  const paraUnit = para.toLowerCase();
 
   let resultado;
 
   // 2. Lógica de conversão
-  if (deUnit === 'celsius' && paraUnit === 'fahrenheit') {
-    resultado = (valor * 9/5) + 32; // Celsius para Fahrenheit
-  } else if (deUnit === 'fahrenheit' && paraUnit === 'celsius') {
-    resultado = (valor - 32) * 5/9; // Fahrenheit para Celsius
+  if (deUnit === 'celsius' && paraUnit === 'fahrenheit') { // Celsius para Fahrenheit
+    resultado = (valor * 9/5) + 32;
+  } else if (deUnit === 'fahrenheit' && paraUnit === 'celsius') { // Fahrenheit para Celsius
+    resultado = (valor - 32) * 5/9; // Problema, quando coloca 1.8 ao inves de 5/9, a linha 45 vem como resultado 324°C ao inves de 100°C
   } else if (deUnit === paraUnit) {
     // Se as unidades são as mesmas, não há conversão a fazer.
     resultado = valor;
@@ -34,7 +37,9 @@ function converterTemperatura(conv) {
   return parseFloat(resultado.toFixed(2));
 }
 
-// --- Exemplos de Uso ---
+// ----------------------
+// Exemplos de Uso
+// ----------------------
 console.log("Testando o conversor de temperatura:");
 
 // Conversões válidas
