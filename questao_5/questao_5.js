@@ -16,8 +16,8 @@ function converterTemperatura(conv) {
 
   // Extrai as propriedades do objeto para variáveis locais.
   const { valor, de, para } = conv;
-  const deUnit = de.toLowerCase();
-  const paraUnit = para.toLowerCase();
+  const deUnit = de.toLowerCase();    // Garante comparação sem diferenciar maiúsculas/minúsculas
+  const paraUnit = para.toLowerCase(); // Garante comparação sem diferenciar maiúsculas/minúsculas
 
   let resultado;
 
